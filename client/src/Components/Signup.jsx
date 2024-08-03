@@ -1,24 +1,28 @@
 import React from "react";
 import "../App.css";
+import Axios from "axios";
+import { useNavigate } from "react-router-dom";
 
 const Signup = () => {
   const [username, setUsername] = React.useState("");
   const [email, setEmail] = React.useState("");
   const [password, setPassword] = React.useState("");
 
+  const navigate = useNavigate();
+
   const handleSubmit = async (e) => {
     e.preventDefault();
-    Axios.post("http://localhost:4000/signup", {
+    Axios.post("http://localhost:4000/auth/signup", {
       username,
       email,
       password,
     }).then((res) => {
-      console.log(res);
+      navigate("/login");
     }).catch((err) => {
       console.log(err);
     })
   };
-  
+
   return (
     <div className="sign-up-container">
       <form className="signup-form" onSubmit={handleSubmit}>
