@@ -1,7 +1,7 @@
 import React from "react";
 import "../App.css";
 import Axios from "axios";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 const Signup = () => {
   const [username, setUsername] = React.useState("");
@@ -17,7 +17,9 @@ const Signup = () => {
       email,
       password,
     }).then((res) => {
+      if (res.data.status){
       navigate("/login");
+      }
     }).catch((err) => {
       console.log(err);
     })
@@ -53,6 +55,7 @@ const Signup = () => {
         />
 
         <button type="submit">Signup</button>
+        <p>Have an account? </p><Link to="/login">Login</Link>
       </form>
     </div>
   );

@@ -17,7 +17,7 @@ router.post("/signup",  async (req, res) => {
 
 
 await newUser.save();
-return res.json({message: "User created successfully"});
+return res.json({status: true, message: "User created successfully"});
     
     })
 
